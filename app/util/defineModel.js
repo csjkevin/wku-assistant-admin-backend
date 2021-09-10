@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (app, name, constructor, options) => {
   const { hooks = {} } = options || {};
   const { beforeCreate = () => {}, beforeUpdate = () => {} } = hooks;
