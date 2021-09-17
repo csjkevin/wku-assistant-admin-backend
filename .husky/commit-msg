@@ -4,4 +4,4 @@
 export PATH="/usr/local/bin/:$PATH"
 export PATH="$PWD/node_modules/.bin:$PATH"
 
-commitlint -c .commitlintrc.js -E HUSKY_GIT_PARAMS
+commitlint --edit "$1"
