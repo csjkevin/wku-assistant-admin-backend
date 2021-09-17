@@ -4,10 +4,10 @@ const { v4: uuidv4 } = require('uuid');
 
 const serviceName = 'wku-onestop';
 
-module.exports = app => {
+module.exports = (app) => {
   return class UserService extends app.Service {
     async login(username, password) {
-      const { ctx, app } = this;
+      const { ctx } = this;
       const user = await ctx.model.User.findByUsername(username);
       delete user.password;
       if (user.password === password) {

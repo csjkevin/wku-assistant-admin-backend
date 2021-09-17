@@ -6,13 +6,15 @@ module.exports = (app, name, constructor, options) => {
   return app.model.define(name, constructor, {
     ...options,
     hooks: {
-      beforeCreate: (record, options) => {
-        record.createdAt = new Date();
-        beforeCreate(record, options);
+      beforeCreate: (_record, _options) => {
+        // eslint-disable-next-line no-param-reassign
+        _record.createdAt = new Date();
+        beforeCreate(_record, _options);
       },
-      beforeUpdate: (record, options) => {
-        record.updatedAt = new Date();
-        beforeUpdate(record, options);
+      beforeUpdate: (_record, _options) => {
+        // eslint-disable-next-line no-param-reassign
+        _record.updatedAt = new Date();
+        beforeUpdate(_record, _options);
       },
     },
   });
