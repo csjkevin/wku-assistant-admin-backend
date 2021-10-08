@@ -4,13 +4,14 @@
   "description": "",
   "private": true,
   "egg": {
+    "typescript": true,
     "declarations": true
   },
   "dependencies": {
     "egg": "^2.30.0",
     "egg-redis": "^2.4.0",
     "egg-scripts": "^2.15.1",
-    "egg-sequelize": "^6.0.0",
+    "egg-sequelize-ts": "^0.2.3-0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "uuid": "^8.3.2"
@@ -18,6 +19,11 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^13.2.0",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.10.3",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "@umijs/fabric": "^2.8.1",
     "autod": "^3.1.1",
     "autod-egg": "^1.1.0",
@@ -25,8 +31,6 @@
     "egg-ci": "^1.19.0",
     "egg-mock": "^3.26.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jest": "^24.4.2",
     "eslint-config-egg": "^7.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^36.0.0",
@@ -35,24 +39,28 @@
     "prettier": "^2.4.1",
     "prettier-eslint": "^13.0.0",
     "pretty-quick": "^3.1.1",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-wku-onestop-backend",
-    "stop": "egg-scripts stop --title=egg-server-wku-onestop-backend",
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "ci": "npm run lint && npm run cov",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "tsc": "ets && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "clean": "ets clean"
   },
   "ci": {
     "version": "10"
@@ -64,7 +72,7 @@
   "author": "",
   "license": "MIT",
   "lint-staged": {
-    "*.{js}": [
+    "*.{js,ts}": [
       "eslint -c .eslintrc.js",
       "prettier --write"
     ]

@@ -1,22 +1,10 @@
-/* eslint valid-jsdoc: "off" */
+import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 
-'use strict';
+export default (appInfo: EggAppInfo) => {
+  const config = {} as PowerPartial<EggAppConfig>;
 
-/**
- * @param {Egg.EggAppInfo} appInfo app info
- */
-module.exports = (appInfo) => {
-  /**
-   * built-in config
-   * @type {Egg.EggAppConfig}
-   * */
-  // eslint-disable-next-line no-multi-assign
-  const config = (exports = {});
-
-  // use for cookie sign key, should change to your own and keep security
   config.keys = `${appInfo.name}_1630917961165_4313`;
 
-  // add your middleware config here
   config.middleware = [];
 
   config.sequelize = {
@@ -32,6 +20,7 @@ module.exports = (appInfo) => {
       timestamps: false,
     },
     timezone: '+08:00',
+    operatorsAliases: false,
   };
 
   config.redis = {
@@ -49,7 +38,10 @@ module.exports = (appInfo) => {
     },
   };
 
+  const bizConfig = {};
+
   return {
     ...config,
+    ...bizConfig,
   };
 };
