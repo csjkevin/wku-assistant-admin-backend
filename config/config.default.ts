@@ -9,11 +9,11 @@ export default (appInfo: EggAppInfo) => {
 
   config.sequelize = {
     dialect: 'postgres',
-    database: process.env.WKU_ONESTOP_DB_NAME,
+    database: process.env.WKU_ASSISTANT_ADMIN_DB_NAME,
     host: 'localhost',
     port: 5432,
-    username: process.env.WKU_ONESTOP_DB_USER,
-    password: process.env.WKU_ONESTOP_DB_PASS,
+    username: process.env.WKU_ASSISTANT_ADMIN_DB_USER,
+    password: process.env.WKU_ASSISTANT_ADMIN_DB_PASS,
     define: {
       underscored: false,
       freezeTableName: true,
