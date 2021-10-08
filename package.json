@@ -60,7 +60,8 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "prepare": "husky install",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "migrate": "node ./database/prepare-migrations.js && sequelize-cli db:migrate"
   },
   "ci": {
     "version": "10"

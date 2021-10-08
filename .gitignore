@@ -17,3 +17,4 @@ typings/
 /app/**/*.js
 /config/**/*.js
 app.js
+/database/migrations/temp
